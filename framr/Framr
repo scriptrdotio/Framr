@@ -119,7 +119,7 @@ function Framr(scope, classpath, quite){
       new scope.Logger(scope)
 
       // We need to include JSFace to support JS OOP library to make it available to all modules using ClassLoader
-      var jsface = require("/modules/JSFace/jsface.js")
+      var jsface = require("/modules/framr/jsface.min.js")
       scope.Class  = jsface.Class
       scope.extend = jsface.extend
     }
