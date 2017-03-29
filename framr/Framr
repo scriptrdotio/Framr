@@ -120,10 +120,33 @@ function Framr(scope, classpath, quite){
 
       // We need to include JSFace to support JS OOP library to make it available to all modules using ClassLoader
       var jsface = require("/modules/framr/jsface.min.js")
-      scope.Class  = jsface.Class
+ 	  //scope.Class  = jsface.Class;
+      scope.Class  = function(arg1, arg2) {
+        var definition;
+        var instance ;
+        if (arg2 === undefined) {
+          definition = arg1
+          instance = jsface.Class(arg1);
+        } else {
+          definition = arg2
+          instance = jsface.Class(arg1, arg2)
+        }
+       	instance._definition = getDefinition(definition ? definition : [])
+      	scope.extend = jsface.extend;
+      	return instance;
+     }
+            
       scope.extend = jsface.extend
     }
   })(scope))()
+}
+
+function getDefinition(definition){
+  var def =  [];
+  for(var propt in definition){
+   	 def.push(propt);
+  }
+  return def;
 }
 
 /*
