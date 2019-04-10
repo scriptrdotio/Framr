@@ -25,8 +25,8 @@
 function init(scope, config) {
   var framr = new Framr(scope, config.classPath.split(";"), config.quite)
 
-  scope.logger.debug(config)
-  scope.logger.debug("Framr.js initialized")
+  //scope.logger.debug(config)
+  //scope.logger.debug("Framr.js initialized")
   return framr  
 }
 
@@ -63,40 +63,40 @@ function import(className, classPath, scope, base, reload, quite) {
   }
 
   if (scope[_className] && !reload) {
-    if (scope.logger && !quite)  logger.debug("ClassLoader - class [" + className + "] already loaded, not reloading ")
+    //if (scope.logger && !quite)  logger.debug("ClassLoader - class [" + className + "] already loaded, not reloading ")
     return scope[_className]
   }
-  if (scope.logger && !quite) logger.debug("ClassLoader - loading class: " + className)
+  //if (scope.logger && !quite) logger.debug("ClassLoader - loading class: " + className)
 
   for (var i=0; i<classPath.length; i++) {
     try {
       var p = base+classPath[i]+namePath
-      if (scope.logger && !quite) logger.debug("ClassLoader - attempting require('" + p + "')")
+      //if (scope.logger && !quite) logger.debug("ClassLoader - attempting require('" + p + "')")
       loadedScript = require(p)
 
       loadedClass = loadedScript[_className]
-      if (scope.logger && !quite) logger.debug("ClassLoader - module [" + p + "] loaded")
+      //if (scope.logger && !quite) logger.debug("ClassLoader - module [" + p + "] loaded")
 
       break
     } catch (e) {}
   }
 
   if (!loadedClass) {
-    if (scope.logger) logger.error("ClassLoader - Class [" + className + "] not found in classpath"); 
-    else console.logger("ClassLoader - Class [" + className + "] not found in classpath")  
+    //if (scope.logger) logger.error("ClassLoader - Class [" + className + "] not found in classpath"); 
+    //else console.logger("ClassLoader - Class [" + className + "] not found in classpath")  
     return null
   }
 
   // Detect if the loaded class file has an init function and call it
   if (loadedScript.init) { //(typeof loadedClass.init == "function") {
     loadedScript.init(scope)
-    if (scope.logger) logger.info("ClassLoader - Script file ["+_className+"] init method invoked.")
+    //if (scope.logger) logger.info("ClassLoader - Script file ["+_className+"] init method invoked.")
   }
 
   scope[_className] = loadedClass // install Class into scope, instantiation example: object = new Class()
   set(scope, className, loadedClass)  // install full Class name into scope, instantiation example: object = new this.package.Class()
 
-  if (scope.logger) logger.info("ClassLoader - Class ["+_className+"] installed in scope.")
+  //if (scope.logger) logger.info("ClassLoader - Class ["+_className+"] installed in scope.")
 
   // return new class in case you need a quick reference
   return loadedClass
@@ -118,8 +118,8 @@ function Framr(scope, classpath, quite){
         return import(className, classpath, scope, base, reload, quite) 
       }
       // We need a logger by default
-      scope.import("m.framr.commons.logger.Logger")
-      new scope.Logger(scope)
+      //scope.import("m.framr.commons.logger.Logger")
+      //new scope.Logger(scope)
 
       // We need to include JSFace to support JS OOP library to make it available to all modules using ClassLoader
       var jsface = require("m/framr/jsface.min.js")
