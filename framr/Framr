@@ -108,8 +108,7 @@ function import(className, classPath, scope, base, reload, quite) {
  *		@quite:		Makes all framr related logging less verbose
  */
  
- // We need to include JSFace to support JS OOP library to make it available to all modules using ClassLoader
-var jsface = require("./jsface.min.js")
+
  
 function Framr(scope, classpath, quite){
   (new (function(scope){
@@ -122,6 +121,8 @@ function Framr(scope, classpath, quite){
       scope.import("framr.commons.logger.Logger")
       new scope.Logger(scope)
 
+      // We need to include JSFace to support JS OOP library to make it available to all modules using ClassLoader
+      var jsface = require("m/framr/jsface.min.js")
       
  	  //scope.Class  = jsface.Class;
       scope.Class  = function(arg1, arg2) {
