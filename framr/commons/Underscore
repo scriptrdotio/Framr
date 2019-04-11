@@ -9,6 +9,6 @@ function Underscore() {
  *
  */
 function init(scope) {
-  logger.log("installing _") 
+  //logger.log("installing _") 
   scope._ = require("/modules/underscore/underscore.js")._  
 }
