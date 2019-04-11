@@ -70,7 +70,7 @@ function import(className, classPath, scope, base, reload, quite) {
 
   for (var i=0; i<classPath.length; i++) {
     try {
-      var p = base+classPath[i]+namePath
+      var p = classPath[i]+namePath
       //if (scope.logger && !quite) logger.debug("ClassLoader - attempting require('" + p + "')")
       loadedScript = require(p)
 
