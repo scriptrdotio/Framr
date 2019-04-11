@@ -4,7 +4,7 @@
 var AbstractRepositoryAdaptor = Class({
   constructor: function(config) {
     this.config = config
-    logger.debug("instantiating Framr abstract repository adaptor")
+    //logger.debug("instantiating Framr abstract repository adaptor")
   },
   create: function() {},
   update: function() {},
