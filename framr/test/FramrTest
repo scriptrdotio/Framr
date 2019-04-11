@@ -1,6 +1,6 @@
-require("/modules/framr/Framr").init(this, {classPath: "./modules/"})
+require("m/framr/Framr").init(this, {classPath: "u/deviceModelEditor/"})
 
-logger.setLevel("DEBUG")
+//logger.setLevel("DEBUG")
 
 // Test class definition 
 var Person = Class({
@@ -28,11 +28,11 @@ var Person = Class({
 // Test object instantiation
 var person = new Person("Tom", 50);
 person.address = "119 west 24"
-logger.info(person.toString())
+//logger.info(person.toString())
 
 // Test Class init
-import("framr.commons.Underscore")
-_.each([1, 2, 3], logger.log);
+//import("framr.commons.Underscore")
+//_.each([1, 2, 3], logger.log);
 
-logger.log((person instanceof Person)?"works!":"")
+//logger.log((person instanceof Person)?"works!":"")
 
